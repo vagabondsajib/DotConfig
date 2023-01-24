@@ -1,9 +1,9 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+##if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+##  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+##fi
 
 # Dependencies You Need for this Config
 # zsh-syntax-highlighting - syntax highlighting for ZSH in standard repos
@@ -46,10 +46,10 @@ bindkey '^ ' autosuggest-accept
 source $HOME/.config/zsh/zsh-autosuggestions.zsh 2>/dev/null
 source $HOME/.config/zsh/zsh-syntax-highlighting.zsh 2>/dev/null
 source $HOME/.config/zsh/autojump.zsh 2>/dev/null
-source $HOME/.config/zsh/powerlevel10k/powerlevel10k.zsh-theme
+#source $HOME/.config/zsh/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 
 ######################################
@@ -79,7 +79,7 @@ ex ()
   fi
 }
 
-export EDITOR=vim
+export EDITOR=nano
 
 alias pacman-update='sudo pacman-mirrors --geoip'
 
@@ -127,22 +127,60 @@ alias p='ps -f'
 alias sortnr='sort -n -r'
 alias unexport='unset'
 
-alias rm='rm -i'
-alias cp='cp -i'
+
+# confirm before overwriting something
+alias cp="cp -i"
 alias mv='mv -i'
+alias rm='rm -i'
+
+
 alias vim='vim'
 alias vi='vim'
 alias gds-start='sudo systemctl start openvpn-client@gds'
 alias gds-stop='sudo systemctl stop openvpn-client@gds'
 alias gp=gitpush
 alias gu=gitupdate
-alias lbrynet='/opt/LBRY/resources/static/daemon/lbrynet'
 alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 
-###########################
+######################################################################################################
+
+alias unlock='sudo rm /var/lib/pacman/db.lck'    # remove pacman lock
+alias cleanup='sudo pacman -Rns $(pacman -Qtdq)' # remove orphaned packages
+
+# get fastest mirrors
+alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
+alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
+alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
+alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
+
+# Colorize grep output (good for log files)
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+
+# adding flags
+alias df='df -h'                          # human-readable sizes
+alias free='free -m'                      # show sizes in MB
+
+# Changing "ls" to "exa"
+alias ls='exa -al --color=always --group-directories-first' # my preferred listing
+alias la='exa -a --color=always --group-directories-first'  # all files and dirs
+alias ll='exa -l --color=always --group-directories-first'  # long format
+alias lt='exa -aT --color=always --group-directories-first' # tree listing
+alias l.='exa -a | egrep "^\."'
+
+# switch between shells
+# do not recommend switching default SHELL from bash.
+alias tobash="sudo chsh $USER -s /bin/bash && echo 'Now log out.'"
+alias tozsh="sudo chsh $USER -s /bin/zsh && echo 'Now log out.'"
+alias tofish="sudo chsh $USER -s /bin/fish && echo 'Now log out.'"
+
+
+#################################################################################################################################
 
 ##custom alias
-alias ls='exa'
+#alias ls='exa'
 alias pacup='sudo pacman -Syu'
 alias pacin='sudo pacman -S'
 alias pacs='pacman -Ss'
@@ -162,8 +200,6 @@ alias ...='cd ../..'
 alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias -s {mp4,mkv}=mpv
-alias -s py='/home/mustafiz/sublime_text_3/sublime_text'
-alias subl='/home/mustafiz/sublime_text_3/sublime_text'
 alias py='/bin/python'
 alias vn='vnstat'
 alias wifi='nmcli dev wifi'
@@ -176,4 +212,5 @@ alias help='tldr'
 alias yt='ytfzf -fl'
 alias ytt='ytfzf -tfl'
 
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
+
+eval "$(starship init zsh)"
