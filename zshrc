@@ -46,7 +46,7 @@ bindkey '^ ' autosuggest-accept
 source $HOME/.config/zsh/zsh-autosuggestions.zsh 2>/dev/null
 source $HOME/.config/zsh/zsh-syntax-highlighting.zsh 2>/dev/null
 source $HOME/.config/zsh/autojump.zsh 2>/dev/null
-source $HOME/.config/zsh/powerlevel10k.zsh-theme
+source $HOME/.config/zsh/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
