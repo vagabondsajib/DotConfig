@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open Terminal Here</name>
+	<submenu></submenu>
+	<unique-id>1561037580080073-1</unique-id>
+	<command>exo-open --working-directory %f --launch TerminalEmulator</command>
+	<description>Example for a custom action</description>
+	<range></range>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+<action>
+	<icon>thunar</icon>
+	<name>Root Thunar</name>
+	<submenu></submenu>
+	<unique-id>1675186226384445-1</unique-id>
+	<command>pkexec thunar</command>
+	<description>Root Thunar</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+<action>
+	<icon>link</icon>
+	<name>Create symlink</name>
+	<submenu></submenu>
+	<unique-id>1675395729488709-1</unique-id>
+	<command>ln -Ts %f %n“ (link)”</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>io.github.cboxdoerfer.FSearch</icon>
+	<name>FSearch Here</name>
+	<submenu></submenu>
+	<unique-id>1675396069581910-2</unique-id>
+	<command>fsearch path</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+<action>
+	<icon>converseen</icon>
+	<name>Convert to JPG</name>
+	<submenu></submenu>
+	<unique-id>1675396222214344-3</unique-id>
+	<command>convert %f -quality 50 %f.jpg</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+<action>
+	<icon>document-edit-sign</icon>
+	<name>Edit as root</name>
+	<submenu></submenu>
+	<unique-id>1675396310535067-4</unique-id>
+	<command>pkexec leafpad %f</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<other-files/>
+	<text-files/>
+</action>
+<action>
+	<icon>gnome-subtitles</icon>
+	<name>Sub Rename</name>
+	<submenu></submenu>
+	<unique-id>1675396894221086-5</unique-id>
+	<command>py $HOME/Documents/renamethemsubs.py</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+</action>
+</actions>
